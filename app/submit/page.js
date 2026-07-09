@@ -145,7 +145,7 @@ export default function SubmitPage() {
         <h2 className="mono" style={{ margin: "0 0 4px" }}>
           login dulu, bro
         </h2>
-        <p>Buat share API kamu harus login pakai akun GitHub. Cepet kok, sekali klik.</p>
+        <p>Buat share Scrape kamu harus login pakai akun GitHub. Cepet kok, sekali klik.</p>
         <button className="btn btn-primary" onClick={handleLogin}>
           Login dengan GitHub
         </button>
@@ -186,7 +186,7 @@ export default function SubmitPage() {
           id="description"
           required
           style={{ minHeight: 70 }}
-          placeholder="API ini ngapain, ambil data dari mana..."
+          placeholder="Scrape Untuk ngapain, bla bla bla..."
           value={form.description}
           onChange={(e) => update("description", e.target.value)}
         />
@@ -226,7 +226,7 @@ export default function SubmitPage() {
           value={form.endpoint}
           onChange={(e) => update("endpoint", e.target.value)}
         />
-        <span className="hint">Endpoint publik yang bisa langsung dicoba orang lain.</span>
+        <span className="hint">Endpoint yang bisa langsung dicoba orang lain.</span>
       </div>
 
       <div className="field">
