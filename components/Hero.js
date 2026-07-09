@@ -63,7 +63,7 @@ export default function Hero() {
           <span style={{ background: "#e35b5b" }}></span>
           <span style={{ background: "#f2c94c" }}></span>
           <span style={{ background: "#6fcf6f" }}></span>
-          <span className="t-label">~/apifoolid — boot.sh</span>
+          <span className="t-label">~/apifoolid</span>
         </div>
         <div className="terminal-body">
           {display.map((l, i) => (
