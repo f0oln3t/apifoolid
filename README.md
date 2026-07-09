@@ -114,3 +114,4 @@ lebih suka satu ekosistem sama Auth/Firestore.
   client-side karena butuh Firebase Auth di browser)
 - Rate limiting submit via Cloud Functions
 - Validasi endpoint hidup (ping check) sebelum publish
+
