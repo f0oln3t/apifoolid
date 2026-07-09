@@ -10,38 +10,43 @@ const BOOT_LINES = [
 ];
 
 export default function Hero() {
-  const [lines, setLines] = useState([]);
+  const [display, setDisplay] = useState([]);
   const [done, setDone] = useState(false);
-  const [typing, setTyping] = useState(true);
-  const started = useRef(false);
   const endRef = useRef(null);
+  const state = useRef({ line: 0, char: 0, phase: "type" });
+  const started = useRef(false);
 
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-
-    let lineIndex = 0;
-    let charIndex = 0;
+    const s = state.current;
 
     function tick() {
-      if (lineIndex >= BOOT_LINES.length) {
+      if (s.line >= BOOT_LINES.length) {
         setDone(true);
-        setTyping(false);
         return;
       }
-      const { prompt, text, cls } = BOOT_LINES[lineIndex];
-      charIndex++;
-      setLines((prev) => {
-        const next = [...prev];
-        next[lineIndex] = { prompt, cls, text: text.slice(0, charIndex) };
-        return next;
-      });
-      if (charIndex >= text.length) {
-        lineIndex++;
-        charIndex = 0;
-        setTimeout(tick, 220);
+
+      const { prompt, text, cls } = BOOT_LINES[s.line];
+
+      if (s.phase === "type") {
+        s.char++;
+        setDisplay((prev) => {
+          const next = [...prev];
+          next[s.line] = { prompt, cls, text: text.slice(0, s.char) };
+          return next;
+        });
+        if (s.char >= text.length) {
+          s.phase = "pause";
+          setTimeout(tick, 250);
+        } else {
+          setTimeout(tick, cls === "comment" ? 12 : 30);
+        }
       } else {
-        setTimeout(tick, cls === "comment" ? 8 : 22);
+        s.line++;
+        s.char = 0;
+        s.phase = "type";
+        setTimeout(tick, 80);
       }
     }
     tick();
@@ -49,7 +54,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (endRef.current) endRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [lines]);
+  }, [display]);
 
   return (
     <section className="hero">
@@ -61,13 +66,13 @@ export default function Hero() {
           <span className="t-label">~/apifoolid — boot.sh</span>
         </div>
         <div className="terminal-body">
-          {lines.map((l, i) => (
+          {display.map((l, i) => (
             <div className="line" key={i}>
               {l.prompt && <span className="prompt">{l.prompt}</span>}
               <span className={l.cls}>{l.text}</span>
             </div>
           ))}
-          <span ref={endRef} className={`cursor ${typing ? "active" : "blink"}`}></span>
+          <span ref={endRef} className={`cursor ${done ? "blink" : "active"}`}></span>
         </div>
       </div>
       <p className="hero-sub">
