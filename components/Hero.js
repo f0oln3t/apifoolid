@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const BOOT_LINES = [
-  { prompt: "$ ", text: "curl https://apifoolid.dev/status", cls: "out" },
+  { prompt: "$ ", text: "curl https://api.foolid.my.id/status", cls: "out" },
   { prompt: "", text: "ok — endpoint online, siap terima kontribusi", cls: "comment" },
   { prompt: "$ ", text: "apifoolid init", cls: "out" },
   { prompt: "", text: "> login dengan GitHub untuk mulai share API kamu", cls: "comment" },
