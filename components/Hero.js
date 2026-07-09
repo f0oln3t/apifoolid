@@ -12,7 +12,9 @@ const BOOT_LINES = [
 export default function Hero() {
   const [lines, setLines] = useState([]);
   const [done, setDone] = useState(false);
+  const [typing, setTyping] = useState(true);
   const started = useRef(false);
+  const endRef = useRef(null);
 
   useEffect(() => {
     if (started.current) return;
@@ -24,6 +26,7 @@ export default function Hero() {
     function tick() {
       if (lineIndex >= BOOT_LINES.length) {
         setDone(true);
+        setTyping(false);
         return;
       }
       const { prompt, text, cls } = BOOT_LINES[lineIndex];
@@ -38,11 +41,15 @@ export default function Hero() {
         charIndex = 0;
         setTimeout(tick, 220);
       } else {
-        setTimeout(tick, cls === "comment" ? 6 : 18);
+        setTimeout(tick, cls === "comment" ? 8 : 22);
       }
     }
     tick();
   }, []);
+
+  useEffect(() => {
+    if (endRef.current) endRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [lines]);
 
   return (
     <section className="hero">
@@ -60,7 +67,7 @@ export default function Hero() {
               <span className={l.cls}>{l.text}</span>
             </div>
           ))}
-          {done && <span className="cursor"></span>}
+          <span ref={endRef} className={`cursor ${typing ? "active" : "blink"}`}></span>
         </div>
       </div>
       <p className="hero-sub">
