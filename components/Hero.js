@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 const BOOT_LINES = [
   { prompt: "$ ", text: "curl https://api.foolid.my.id/status", cls: "out" },
-  { prompt: "", text: "ok — endpoint online, siap terima kontribusi", cls: "comment" },
+  { prompt: "", text: "ok — website online, siap terima kontribusi", cls: "comment" },
   { prompt: "$ ", text: "apifoolid init", cls: "out" },
-  { prompt: "", text: "> login dengan GitHub untuk mulai share API kamu", cls: "comment" },
+  { prompt: "", text: "> login dengan GitHub untuk mulai share kamu", cls: "comment" },
 ];
 
 export default function Hero() {
@@ -76,8 +76,8 @@ export default function Hero() {
         </div>
       </div>
       <p className="hero-sub">
-        <b>APi.foolid</b> tempat komunitas nge-share API hasil scrape — downloader, search,
-        anime, AI, apa aja. Login pakai GitHub, submit endpoint kamu lengkap sama README, orang
+        <b>APi.foolid</b> tempat komunitas nge-share scrape dan APi — downloader, search,
+        anime, AI, apa aja. orang
         lain tinggal pakai.
       </p>
     </section>
