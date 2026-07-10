@@ -13,6 +13,7 @@ apifoolid-next/
 │   ├── globals.css          # semua styling (tema terminal)
 │   ├── page.js               # "/" — direktori API (search + filter, realtime)
 │   ├── submit/page.js        # "/submit" — form share API (login-gated)
+│   ├── edit/[id]/page.js     # "/edit/:id" — edit API milik sendiri
 │   └── item/[id]/page.js     # "/item/:id" — detail + README markdown
 ├── components/
 │   ├── Navbar.js
@@ -102,13 +103,13 @@ lebih suka satu ekosistem sama Auth/Firestore.
 - Login/logout via GitHub OAuth (Firebase Auth)
 - Direktori API publik: search, filter kategori, realtime update (`onSnapshot`)
 - Form share API (login-gated) dengan editor README markdown
-- Halaman detail: README dirender jadi HTML (marked + DOMPurify buat sanitize)
+- Halaman detail: README dirender jadi HTML (marked + DOMPurify buat sanitize) — ditandai dengan ikon file (`./readme.md`)
 - Like per API (satu like per user, disimpan sebagai array uid)
-- Pemilik API bisa hapus API miliknya
+- Pemilik API bisa edit & hapus API miliknya sendiri
+- Kode snippet bisa di-scroll (overflow auto) biar halaman nggak panjang
 
 ## Ide pengembangan lanjut
 
-- Edit API (sekarang cuma create + delete, belum ada update form)
 - Halaman profil `/user/[uid]` nampilin semua API dari satu user
 - Server Component + `getDocs` di build time untuk SEO metadata per API (saat ini semua
   client-side karena butuh Firebase Auth di browser)

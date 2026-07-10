@@ -148,12 +148,6 @@ export default function ApiDetailPage() {
         </button>
       </div>
 
-      <div className="pg-actions" style={{ marginTop: -8 }}>
-        <Link href={`/playground?api=${item.id}`} className="btn btn-primary">
-          Coba di Playground →
-        </Link>
-      </div>
-
       {item.code && (
         <div className="code-block">
           <div className="code-block-head">
