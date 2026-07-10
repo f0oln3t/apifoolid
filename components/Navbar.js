@@ -37,6 +37,9 @@ export default function Navbar() {
           <Link href="/" className={pathname === "/" ? "active" : ""}>
             Direktori
           </Link>
+          <Link href="/playground" className={pathname === "/playground" ? "active" : ""}>
+            Playground
+          </Link>
           <Link href="/submit" className={pathname === "/submit" ? "active" : ""}>
             ShareSnippet
           </Link>
