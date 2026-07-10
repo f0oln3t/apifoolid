@@ -38,7 +38,7 @@ export default function Navbar() {
             Direktori
           </Link>
           <Link href="/submit" className={pathname === "/submit" ? "active" : ""}>
-            Share API
+            ShareSnippet
           </Link>
           <a href="https://github.com/f0oln3t/apifoolid" target="_blank" rel="noopener noreferrer">
             Ikut kontribusi
